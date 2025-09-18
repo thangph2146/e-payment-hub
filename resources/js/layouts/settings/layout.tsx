@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils';
 import { edit as editAppearance } from '@/routes/appearance';
 import { edit as editPassword } from '@/routes/password';
 import { edit } from '@/routes/profile';
+import { show } from '@/routes/two-factor';
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/react';
 import { type PropsWithChildren } from 'react';
@@ -18,6 +19,11 @@ const sidebarNavItems: NavItem[] = [
     {
         title: 'Password',
         href: editPassword(),
+        icon: null,
+    },
+    {
+        title: 'Two-Factor Auth',
+        href: show(),
         icon: null,
     },
     {
@@ -59,7 +65,7 @@ export default function SettingsLayout({ children }: PropsWithChildren) {
                                             : item.href.url),
                                 })}
                             >
-                                <Link href={item.href} prefetch>
+                                <Link href={item.href}>
                                     {item.icon && (
                                         <item.icon className="h-4 w-4" />
                                     )}
