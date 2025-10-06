@@ -13,5 +13,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
     })->name('dashboard');
 });
 
+Route::get('/test-db-connection', function () {
+    try {
+        \Illuminate\Support\Facades\DB::connection()->getPdo();
+        return 'Successfully connected to the database!';
+    } catch (\Exception $e) {
+        return 'Could not connect to the database. Please check your configuration. Error: ' . $e->getMessage();
+    }
+});
+
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';
