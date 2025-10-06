@@ -11,6 +11,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard', function () {
         return Inertia::render('dashboard');
     })->name('dashboard');
+
+    Route::get('/payment', function () {
+        return Inertia::render('Payment/Index');
+    })->name('payment');
 });
 
 Route::get('/test-db-connection', function () {
